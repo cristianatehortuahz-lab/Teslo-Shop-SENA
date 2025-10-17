@@ -1,0 +1,169 @@
+════════════════════════════════════════════════════════════════
+    COMANDOS PARA SUBIR A GITHUB - TESLO SHOP
+════════════════════════════════════════════════════════════════
+
+📋 COPIA ESTOS COMANDOS Y EJECUTA UNO POR UNO
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASO 1: CONFIGURAR GIT (Solo primera vez)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Reemplaza con TU información:
+
+git config --global user.name "Tu Nombre Completo"
+git config --global user.email "tu-email@ejemplo.com"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASO 2: IR A LA CARPETA DEL PROYECTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+cd "c:\Users\Aprendiz\NO BORRAR\next-teslo-shop-fin-seccion-24"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASO 3: HACER COMMIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+git commit -m "Initial commit: Teslo Shop E-Commerce completo para SENA"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASO 4: ACTUALIZAR README
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+move README.md README_ORIGINAL.md
+move README_GITHUB.md README.md
+git add .
+git commit -m "Actualizar README para GitHub"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASO 5: CREAR REPOSITORIO EN GITHUB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Ve a: https://github.com
+2. Click en "+" → "New repository"
+3. Nombre: teslo-shop-sena
+4. Descripción: E-Commerce Full-Stack con Next.js 14 - Proyecto SENA
+5. Public ✅
+6. NO marcar "Initialize with README"
+7. Click "Create repository"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PASO 6: CONECTAR CON GITHUB Y SUBIR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Reemplaza TU_USUARIO con tu nombre de usuario de GitHub:
+
+git branch -M main
+git remote add origin https://github.com/TU_USUARIO/teslo-shop-sena.git
+git push -u origin main
+
+
+════════════════════════════════════════════════════════════════
+📝 EJEMPLO COMPLETO CON DATOS REALES
+════════════════════════════════════════════════════════════════
+
+Supongamos que tu usuario de GitHub es: juanperez
+
+# 1. Configurar Git
+git config --global user.name "Juan Pérez"
+git config --global user.email "juanperez@gmail.com"
+
+# 2. Ir a carpeta
+cd "c:\Users\Aprendiz\NO BORRAR\next-teslo-shop-fin-seccion-24"
+
+# 3. Commit inicial
+git commit -m "Initial commit: Teslo Shop E-Commerce completo para SENA"
+
+# 4. README
+move README.md README_ORIGINAL.md
+move README_GITHUB.md README.md
+git add .
+git commit -m "Actualizar README para GitHub"
+
+# 5. Cambiar a main
+git branch -M main
+
+# 6. Conectar (AJUSTA TU USUARIO AQUÍ)
+git remote add origin https://github.com/juanperez/teslo-shop-sena.git
+
+# 7. Subir
+git push -u origin main
+
+
+════════════════════════════════════════════════════════════════
+🔐 AUTENTICACIÓN
+════════════════════════════════════════════════════════════════
+
+GitHub te pedirá usuario y contraseña. NO uses tu contraseña normal.
+
+DEBES usar un Personal Access Token:
+
+1. Ve a: https://github.com/settings/tokens
+2. Click "Generate new token (classic)"
+3. Nombre: "Teslo Shop"
+4. Expiration: 90 días
+5. Scopes: Marca ✅ "repo" (full control)
+6. Click "Generate token"
+7. COPIA EL TOKEN (solo se muestra una vez)
+8. Úsalo como contraseña cuando git push te lo pida
+
+
+════════════════════════════════════════════════════════════════
+✅ VERIFICACIÓN
+════════════════════════════════════════════════════════════════
+
+Después de git push, verifica en tu navegador:
+
+https://github.com/TU_USUARIO/teslo-shop-sena
+
+Deberías ver:
+✅ README.md profesional con badges
+✅ Carpeta src/ con el código
+✅ Carpeta DOCS_PROYECTO/ con documentación
+✅ docker-compose.yml
+✅ package.json
+✅ NO debe haber .env (por seguridad)
+✅ NO debe haber node_modules/
+
+
+════════════════════════════════════════════════════════════════
+🔄 FUTUROS CAMBIOS (Cuando edites código)
+════════════════════════════════════════════════════════════════
+
+git add .
+git commit -m "Descripción de lo que cambiaste"
+git push
+
+
+════════════════════════════════════════════════════════════════
+💡 TIPS
+════════════════════════════════════════════════════════════════
+
+✅ Guarda tu Personal Access Token en lugar seguro
+✅ Anota el link de tu repo para la presentación
+✅ Puedes ver el README en GitHub para verificar que se ve bien
+✅ Comparte el link con tus compañeros/profesores
+
+
+════════════════════════════════════════════════════════════════
+📱 LINK FINAL
+════════════════════════════════════════════════════════════════
+
+Tu repositorio quedará en:
+
+https://github.com/TU_USUARIO/teslo-shop-sena
+
+¡Compártelo en tu presentación SENA! 🎉
+
+
+════════════════════════════════════════════════════════════════
+    ¿NECESITAS AYUDA?
+════════════════════════════════════════════════════════════════
+
+Lee el archivo: SUBIR_A_GITHUB.md
+Tiene la guía completa con solución de problemas.
