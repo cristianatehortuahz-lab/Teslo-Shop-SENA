@@ -43,6 +43,11 @@ export const deleteProductImage = async( imageId: number, imageUrl: string ) => 
     revalidatePath(`/admin/product/${ deletedImage.product.slug }`);
     revalidatePath(`/product/${ deletedImage.product.slug }`);
 
+    return {
+      ok: true,
+      message: 'Imagen eliminada correctamente'
+    }
+
   } catch (error) {
     console.log(error);
     return {
@@ -50,8 +55,5 @@ export const deleteProductImage = async( imageId: number, imageUrl: string ) => 
       message: 'No se pudo eliminar la imagen'
     }
   }
-
-
-
 
 }

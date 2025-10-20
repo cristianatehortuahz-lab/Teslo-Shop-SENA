@@ -25,6 +25,22 @@ export const placeOrder = async (
     };
   }
 
+  // Validar que hay productos en el pedido
+  if (!productIds || productIds.length === 0) {
+    return {
+      ok: false,
+      message: "No hay productos en el pedido",
+    };
+  }
+
+  // Validar que la dirección está completa
+  if (!address.firstName || !address.lastName || !address.address || !address.city || !address.country || !address.phone || !address.postalCode) {
+    return {
+      ok: false,
+      message: "La dirección de entrega está incompleta",
+    };
+  }
+
   // Obtener la información de los productos
   // Nota: recuerden que podemos llevar 2+ productos con el mismo ID
   const products = await prisma.product.findMany({
