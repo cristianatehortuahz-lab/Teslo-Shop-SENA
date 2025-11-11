@@ -3,6 +3,7 @@ import { Title } from '@/components';
 import { redirect } from 'next/navigation';
 import { IoCartOutline, IoPeopleOutline, IoShirtOutline } from 'react-icons/io5';
 import Link from 'next/link';
+import { AdminStats } from './ui/AdminStats';
 
 export default async function AdminPage() {
   
@@ -14,9 +15,11 @@ export default async function AdminPage() {
 
   return (
     <>
-      <Title title="Panel de Administración" />
+      <Title title="Panel de Control" />
 
       <div className="mb-10">
+        <AdminStats />
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {/* Card: Productos */}
           <Link 

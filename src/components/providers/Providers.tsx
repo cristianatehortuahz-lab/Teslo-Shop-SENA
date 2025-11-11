@@ -2,6 +2,7 @@
 
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { SessionProvider } from "next-auth/react";
+import { CartSync } from './CartSync';
 
 interface Props {
   children: React.ReactNode;
@@ -16,7 +17,10 @@ export const Providers = ({ children }: Props) => {
       intent: 'capture',
       currency: 'USD',
     }}>
-      <SessionProvider>{children}</SessionProvider>
+      <SessionProvider>
+        <CartSync />
+        {children}
+      </SessionProvider>
     </PayPalScriptProvider>
   );
 };

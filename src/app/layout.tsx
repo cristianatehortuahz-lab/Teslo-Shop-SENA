@@ -6,10 +6,13 @@ import { Providers } from "@/components";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - Teslo | Shop",
-    default: "Home - Teslo | Shop",
+    template: "%s - Nova | Shop",
+    default: "Home - Nova | Shop",
   },
   description: "Una tienda virtual de productos",
+  openGraph: {
+    siteName: 'Nova | Shop',
+  },
 };
 
 export default function RootLayout({

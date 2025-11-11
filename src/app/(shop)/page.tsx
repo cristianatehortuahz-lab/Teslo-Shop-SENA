@@ -4,7 +4,7 @@ export const revalidate = 60; // 60 segundos
 import { redirect } from 'next/navigation';
 
 import { getPaginatedProductsWithImages } from '@/actions';
-import { Pagination, ProductGrid, Title } from '@/components';
+import { Pagination, ProductGrid, Testimonials, Title } from '@/components';
 
 
 
@@ -39,6 +39,7 @@ export default async function Home({ searchParams }: Props) {
         products={ products }
       />
 
+      <Testimonials />
 
       <Pagination totalPages={ totalPages } />
       

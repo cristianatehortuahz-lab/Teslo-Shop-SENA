@@ -1,6 +1,8 @@
 import prisma from '../lib/prisma';
+import { Size } from '@prisma/client';
 import { initialData } from './seed';
 import { countries } from './seed-countries';
+import { escuelajsProducts } from './escuelajs-products';
 
 
 
@@ -24,6 +26,10 @@ async function main() {
   // ]);
   
   const { categories, products, users } = initialData;
+  const mergedProducts = [
+    ...products,
+    ...escuelajsProducts
+  ];
 
 
   await prisma.user.createMany({
@@ -58,20 +64,27 @@ async function main() {
 
   // Productos
 
-  products.forEach( async(product) => {
+  mergedProducts.forEach( async(product) => {
 
-    const { type, images, ...rest } = product;
+    const { type, images, ...rest } = product as any;
+    const { sizes, tags, ...restWithoutLists } = rest;
 
     const dbProduct = await prisma.product.create({
       data: {
-        ...rest,
+        ...restWithoutLists,
+        sizes: {
+          set: (sizes as Size[])
+        },
+        tags: {
+          set: (tags as string[])
+        },
         categoryId: categoriesMap[type]
       }
     })
 
 
     // Images
-    const imagesData = images.map( image => ({
+    const imagesData = images.map( (image: string) => ({
       url: image,
       productId: dbProduct.id
     }));
