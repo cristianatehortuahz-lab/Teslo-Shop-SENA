@@ -22,6 +22,7 @@ Proyecto de demostración para SENA - 100% funcional, $0 de costo.
 - ✅ **Pagos** - Simulación o PayPal Sandbox
 - ✅ **Perfil de Usuario** - Dashboard con estadísticas
 - ✅ **Recuperación de Contraseña** - Sistema con tokens seguros
+- ✅ **Testimonios de Clientes** - Sistema inteligente con fallback
 
 ### Para Administradores
 - ✅ **Panel de Control** - Dashboard completo
@@ -67,8 +68,8 @@ Proyecto de demostración para SENA - 100% funcional, $0 de costo.
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/teslo-shop.git
-cd teslo-shop
+git clone https://github.com/cristianatehortuahz-lab/Teslo-Shop-SENA.git
+cd Teslo-Shop-SENA
 ```
 
 ### 2. Instalar dependencias
@@ -82,8 +83,8 @@ npm install
 Crea un archivo `.env` en la raíz del proyecto:
 
 ```env
-# Base de Datos
-DATABASE_URL="postgresql://postgres:123456@localhost:5432/teslodb?schema=public"
+# Base de Datos (puerto 5434 - importante!)
+DATABASE_URL="postgresql://postgres:123456@localhost:5434/teslo-shop?schema=public"
 
 # NextAuth
 NEXTAUTH_SECRET=tu_secreto_aleatorio_aqui
@@ -158,13 +159,12 @@ teslo-shop/
 
 ## 📚 Documentación
 
-La documentación completa está en la carpeta `DOCS_PROYECTO/`:
+La documentación completa está disponible:
 
-- **DOCUMENTACION_COMPLETA.md** - Guía completa consolidada
-- **PRESENTACION_SENA.md** - Script de presentación
-- **GUIA_PAYPAL_SANDBOX.md** - Configurar PayPal
-- **RECUPERACION_PASSWORD.md** - Sistema de tokens
-- **PROYECTO_SIN_GASTOS.md** - Configuración sin costos
+- **GUIA_COMPLETA_NOVA_SHOP.md** - Guía completa de 732 líneas ⭐
+- **docs/proyecto/** - Documentación técnica detallada
+- **docs/guias/** - Guías rápidas de inicio
+- **PRESENTACION/** - PowerPoint y documento Word para SENA
 
 ---
 
@@ -227,12 +227,13 @@ Este proyecto demuestra cómo construir un e-commerce profesional **sin gastar d
 ## 📊 Métricas
 
 ```
-Archivos TypeScript: 100+
-Líneas de código: 6,000+
-Componentes React: 35+
-Server Actions: 24+
+Archivos TypeScript: 110+
+Líneas de código: 6,500+
+Componentes React: 40+
+Server Actions: 27
 Productos de prueba: 50+
 Tablas en BD: 10
+Documentación: 732 líneas
 ```
 
 ---
