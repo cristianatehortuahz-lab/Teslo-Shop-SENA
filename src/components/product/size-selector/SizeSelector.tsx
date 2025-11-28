@@ -6,7 +6,7 @@ interface Props {
   selectedSize?: Size;
   availableSizes: Size[];  // ['SX', 'M', 'XL', 'XXL']
 
-  onSizeChanged: ( size: Size ) => void;
+  onSizeChanged: (size: Size) => void;
 }
 
 
@@ -17,23 +17,24 @@ export const SizeSelector = ({ selectedSize, availableSizes, onSizeChanged }: Pr
     <div className="my-5">
       <h3 className="font-bold mb-4">Tallas disponibles</h3>
 
-      <div className="flex">
+      <div className="flex flex-wrap gap-3">
 
         {
-          availableSizes.map( size => (
-            <button 
-              key={ size }
-              onClick={ () => onSizeChanged(size) }
+          availableSizes.map(size => (
+            <button
+              key={size}
+              onClick={() => onSizeChanged(size)}
               className={
                 clsx(
-                  "mx-2 hover:underline text-lg",
+                  "w-12 h-12 flex items-center justify-center border-2 text-sm font-bold transition-all duration-300",
                   {
-                    'underline': size === selectedSize
+                    'bg-black text-white border-black': size === selectedSize,
+                    'bg-white text-black border-gray-300 hover:border-black': size !== selectedSize
                   }
                 )
               }
             >
-              { size}
+              {size}
             </button>
           ))
 

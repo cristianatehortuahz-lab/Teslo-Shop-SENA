@@ -1,7 +1,7 @@
 export const revalidate = 0;
 
 // https://tailwindcomponents.com/component/hoverable-table
-import {  getPaginatedOrders } from "@/actions";
+import { getPaginatedOrders } from "@/actions";
 import { Pagination, Title } from "@/components";
 
 import Link from "next/link";
@@ -22,29 +22,29 @@ export default async function OrdersPage() {
 
       <div className="mb-10">
         <table className="min-w-full">
-          <thead className="bg-gray-200 border-b">
+          <thead className="bg-black border-b">
             <tr>
               <th
                 scope="col"
-                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                className="text-sm font-bold uppercase tracking-wider text-white px-6 py-4 text-left"
               >
                 #ID
               </th>
               <th
                 scope="col"
-                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                className="text-sm font-bold uppercase tracking-wider text-white px-6 py-4 text-left"
               >
                 Nombre completo
               </th>
               <th
                 scope="col"
-                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                className="text-sm font-bold uppercase tracking-wider text-white px-6 py-4 text-left"
               >
                 Estado
               </th>
               <th
                 scope="col"
-                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                className="text-sm font-bold uppercase tracking-wider text-white px-6 py-4 text-left"
               >
                 Opciones
               </th>
@@ -76,18 +76,18 @@ export default async function OrdersPage() {
                   )}
                 </td>
                 <td className="text-sm text-gray-900 font-light px-6 ">
-                  <Link href={`/orders/${ order.id }`} className="hover:underline">
+                  <Link href={`/orders/${order.id}`} className="hover:underline">
                     Ver orden
                   </Link>
                 </td>
               </tr>
             ))}
 
-            
+
           </tbody>
         </table>
 
-        <Pagination totalPages={ 1 } />
+        <Pagination totalPages={1} />
       </div>
     </>
   );

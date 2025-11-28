@@ -56,7 +56,7 @@ export const Sidebar = () => {
       {/* Sidemenu */}
       <nav
         className={clsx(
-          "fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
+          "fixed p-5 right-0 top-0 w-[500px] h-screen bg-black z-20 shadow-2xl transform transition-all duration-300 text-white",
           {
             "translate-x-full": !isSideMenuOpen,
           }
@@ -64,55 +64,55 @@ export const Sidebar = () => {
       >
         <IoCloseOutline
           size={50}
-          className="absolute top-5 right-5 cursor-pointer"
+          className="absolute top-5 right-5 cursor-pointer text-white hover:text-gray-300 transition-colors"
           onClick={() => closeMenu()}
         />
 
         {/* Input */}
         <form onSubmit={handleSearch} className="relative mt-14">
-          <IoSearchOutline size={20} className="absolute top-2 left-2" />
+          <IoSearchOutline size={20} className="absolute top-2 left-2 text-gray-400" />
           <input
             type="text"
-            placeholder="Buscar productos..."
+            placeholder="BUSCAR..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-gray-50 rounded pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-blue-500"
+            className="w-full bg-gray-900 rounded-none pl-10 py-2 pr-10 border-b border-gray-700 text-xl text-white focus:outline-none focus:border-white placeholder:text-gray-600 uppercase tracking-widest"
           />
         </form>
 
         {/* Quick navigation */}
-        <div className="mt-6 space-y-2">
+        <div className="mt-10 space-y-4">
           <Link
             href="/"
             onClick={() => closeMenu()}
-            className="flex items-center p-2 hover:bg-gray-100 rounded transition-all text-sm text-gray-600"
+            className="flex items-center p-2 hover:bg-gray-900 rounded-none transition-all text-lg font-bold uppercase tracking-widest"
           >
-            <span>Todos los productos</span>
+            <span>Todos</span>
           </Link>
           <Link
             href="/gender/men"
             onClick={() => closeMenu()}
-            className="flex items-center p-2 hover:bg-gray-100 rounded transition-all text-sm text-gray-600"
+            className="flex items-center p-2 hover:bg-gray-900 rounded-none transition-all text-lg font-bold uppercase tracking-widest"
           >
             <span>Hombres</span>
           </Link>
           <Link
             href="/gender/women"
             onClick={() => closeMenu()}
-            className="flex items-center p-2 hover:bg-gray-100 rounded transition-all text-sm text-gray-600"
+            className="flex items-center p-2 hover:bg-gray-900 rounded-none transition-all text-lg font-bold uppercase tracking-widest"
           >
             <span>Mujeres</span>
           </Link>
           <Link
             href="/gender/kid"
             onClick={() => closeMenu()}
-            className="flex items-center p-2 hover:bg-gray-100 rounded transition-all text-sm text-gray-600"
+            className="flex items-center p-2 hover:bg-gray-900 rounded-none transition-all text-lg font-bold uppercase tracking-widest"
           >
             <span>Niños</span>
           </Link>
         </div>
 
-        <div className="w-full h-px bg-gray-200 my-6" />
+        <div className="w-full h-px bg-gray-800 my-8" />
 
         {/* Menú */}
 
@@ -121,74 +121,76 @@ export const Sidebar = () => {
             <Link
               href="/profile"
               onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+              className="flex items-center mt-6 p-2 hover:bg-gray-900 rounded-none transition-all text-gray-300 hover:text-white"
             >
-              <IoPersonOutline size={30} />
-              <span className="ml-3 text-xl">Perfil</span>
+              <IoPersonOutline size={24} />
+              <span className="ml-3 text-lg uppercase tracking-wider">Perfil</span>
             </Link>
 
             <Link
               href="/orders"
               onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+              className="flex items-center mt-6 p-2 hover:bg-gray-900 rounded-none transition-all text-gray-300 hover:text-white"
             >
-              <IoTicketOutline size={30} />
-              <span className="ml-3 text-xl">Ordenes</span>
+              <IoTicketOutline size={24} />
+              <span className="ml-3 text-lg uppercase tracking-wider">Ordenes</span>
             </Link>
           </>
         )}
 
         {isAuthenticated && (
           <button
-            className="flex w-full items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+            className="flex w-full items-center mt-6 p-2 hover:bg-gray-900 rounded-none transition-all text-gray-300 hover:text-white"
             onClick={() => logout()}
           >
-            <IoLogOutOutline size={30} />
-            <span className="ml-3 text-xl">Salir</span>
+            <IoLogOutOutline size={24} />
+            <span className="ml-3 text-lg uppercase tracking-wider">Salir</span>
           </button>
         )}
 
         {!isAuthenticated && (
           <Link
             href="/auth/login"
-            className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+            className="flex items-center mt-6 p-2 hover:bg-gray-900 rounded-none transition-all text-gray-300 hover:text-white"
             onClick={() => closeMenu()}
           >
-            <IoLogInOutline size={30} />
-            <span className="ml-3 text-xl">Ingresar</span>
+            <IoLogInOutline size={24} />
+            <span className="ml-3 text-lg uppercase tracking-wider">Ingresar</span>
           </Link>
         )}
 
         {isAdmin && (
           <>
             {/* Line Separator */}
-            <div className="w-full h-px bg-gray-200 my-10" />
+            <div className="w-full h-px bg-gray-800 my-8" />
+
+            <div className="px-2 mb-4 text-xs font-bold text-gray-500 uppercase tracking-[0.2em]">Admin Panel</div>
 
             <Link
               href="/admin/products"
               onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+              className="flex items-center mt-2 p-2 hover:bg-gray-900 rounded-none transition-all text-gray-300 hover:text-white"
             >
-              <IoShirtOutline size={30} />
-              <span className="ml-3 text-xl">Productos</span>
+              <IoShirtOutline size={24} />
+              <span className="ml-3 text-lg uppercase tracking-wider">Productos</span>
             </Link>
 
             <Link
               href="/admin/orders"
               onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+              className="flex items-center mt-4 p-2 hover:bg-gray-900 rounded-none transition-all text-gray-300 hover:text-white"
             >
-              <IoTicketOutline size={30} />
-              <span className="ml-3 text-xl">Ordenes</span>
+              <IoTicketOutline size={24} />
+              <span className="ml-3 text-lg uppercase tracking-wider">Ordenes</span>
             </Link>
 
             <Link
               href="/admin/users"
               onClick={() => closeMenu()}
-              className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+              className="flex items-center mt-4 p-2 hover:bg-gray-900 rounded-none transition-all text-gray-300 hover:text-white"
             >
-              <IoPeopleOutline size={30} />
-              <span className="ml-3 text-xl">Usuarios</span>
+              <IoPeopleOutline size={24} />
+              <span className="ml-3 text-lg uppercase tracking-wider">Usuarios</span>
             </Link>
           </>
         )}

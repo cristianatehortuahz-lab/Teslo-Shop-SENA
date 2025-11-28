@@ -2,6 +2,7 @@
 
 
 
+export * from './ui/hero/Hero';
 export * from './products/product-grid/ProductGrid';
 export * from './products/product-grid/ProductGridItem';
 

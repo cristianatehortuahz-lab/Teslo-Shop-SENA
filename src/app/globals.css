@@ -3,40 +3,82 @@
 @tailwind utilities;
 
 :root {
-  --primary: #274494;
+  --primary: #000000;
+  --secondary: #FFFFFF;
+  --accent: #3B82F6;
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 243, 244, 246;
 }
-/* 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */ 
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-start-rgb))
-      )
-      rgb(var(--background-end-rgb))
+  background: rgb(var(--background-start-rgb));
+  font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #000;
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-gray-800 text-white py-3 px-6 rounded-none transition-all duration-300 font-bold uppercase tracking-wider text-sm;
+}
+
+.btn-secondary {
+  @apply bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-3 px-6 rounded-none transition-all duration-300 font-bold uppercase tracking-wider text-sm;
+}
+
+.btn-disabled {
+  @apply bg-gray-300 text-gray-500 py-3 px-6 rounded-none cursor-not-allowed font-bold uppercase tracking-wider text-sm;
+}
+
+.glass-effect {
+  @apply bg-white/80 backdrop-blur-md border-b border-gray-200;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
 }
 
 
 
 @keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-} 
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 
 @-webkit-keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .fade-in {

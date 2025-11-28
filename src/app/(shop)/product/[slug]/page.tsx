@@ -40,7 +40,7 @@ export async function generateMetadata(
       title: product?.title ?? "Producto no encontrado",
       description: product?.description ?? "",
       // images: [], // https://misitioweb.com/products/image.png
-      images: [ `/products/${ product?.images[1] }`],
+      images: [`/products/${product?.images[1]}`],
     },
   };
 }
@@ -55,9 +55,9 @@ export default async function ProductBySlugPage({ params }: Props) {
   }
 
   return (
-    <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Slideshow */}
-      <div className="col-span-1 md:col-span-2 ">
+      <div className="col-span-1 md:col-span-2 bg-gray-100 p-5 rounded-none">
         {/* Mobile Slideshow */}
         <ProductMobileSlideshow
           title={product.title}
@@ -73,21 +73,25 @@ export default async function ProductBySlugPage({ params }: Props) {
         />
       </div>
 
-      {/* Detalles */}
-      <div className="col-span-1 px-5">
-        <StockLabel slug={product.slug} />
+      {/* Detalles Sticky */}
+      <div className="col-span-1 px-5 relative">
+        <div className="sticky top-24">
+          <StockLabel slug={product.slug} />
 
-        <h1 className={` ${titleFont.className} antialiased font-bold text-xl`}>
-          {product.title}
-        </h1>
+          <h1 className={` ${titleFont.className} antialiased font-bold text-5xl md:text-6xl mt-4 mb-4 leading-none tracking-tighter`}>
+            {product.title}
+          </h1>
 
-        <p className="text-lg mb-5">${product.price}</p>
+          <p className="text-2xl mb-8 font-light border-b border-gray-200 pb-4">${product.price}</p>
 
-        <AddToCart product={ product } />
+          <AddToCart product={product} />
 
-        {/* Descripción */}
-        <h3 className="font-bold text-sm">Descripción</h3>
-        <p className="font-light">{product.description}</p>
+          {/* Descripción */}
+          <div className="mt-10">
+            <h3 className="font-bold text-sm uppercase tracking-widest mb-2">Descripción</h3>
+            <p className="font-light text-gray-600 leading-relaxed">{product.description}</p>
+          </div>
+        </div>
       </div>
     </div>
   );

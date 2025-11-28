@@ -1,10 +1,10 @@
 import { auth } from "@/auth.config";
 import { Title } from "@/components";
 import { redirect } from "next/navigation";
-import { 
-  IoPersonOutline, 
-  IoMailOutline, 
-  IoShieldCheckmarkOutline, 
+import {
+  IoPersonOutline,
+  IoMailOutline,
+  IoShieldCheckmarkOutline,
   IoCartOutline,
   IoLocationOutline,
   IoTimeOutline
@@ -22,7 +22,7 @@ export default async function ProfilePage() {
 
   // Obtener órdenes del usuario
   const { ok, orders = [] } = await getOrdersByUser();
-  
+
   // Obtener dirección del usuario
   const userAddress = await getUserAddress(session.user.id);
 
@@ -43,7 +43,7 @@ export default async function ProfilePage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         {/* Información Personal */}
-        <div className="md:col-span-2 bg-white rounded-lg shadow-md p-6">
+        <div className="md:col-span-2 bg-white rounded-none shadow-md p-6 border border-gray-200">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-800">Información Personal</h2>
             <span className={`px-3 py-1 rounded-full text-sm font-semibold ${roleColor}`}>
@@ -53,7 +53,7 @@ export default async function ProfilePage() {
 
           <div className="space-y-4">
             {/* Nombre */}
-            <div className="flex items-center p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center p-4 bg-gray-50 rounded-none">
               <IoPersonOutline className="text-2xl text-gray-600 mr-4" />
               <div>
                 <p className="text-sm text-gray-500">Nombre completo</p>
@@ -111,7 +111,7 @@ export default async function ProfilePage() {
         {/* Estadísticas de Compras */}
         <div className="space-y-6">
           {/* Total de Órdenes */}
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-md p-6 text-white">
+          <div className="bg-black rounded-none shadow-md p-6 text-white border-l-4 border-accent">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-blue-100 text-sm">Total de Órdenes</p>
@@ -122,7 +122,7 @@ export default async function ProfilePage() {
           </div>
 
           {/* Órdenes Pagadas */}
-          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-md p-6 text-white">
+          <div className="bg-black rounded-none shadow-md p-6 text-white border-l-4 border-green-500">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-green-100 text-sm">Órdenes Pagadas</p>
@@ -133,7 +133,7 @@ export default async function ProfilePage() {
           </div>
 
           {/* Órdenes Pendientes */}
-          <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg shadow-md p-6 text-white">
+          <div className="bg-black rounded-none shadow-md p-6 text-white border-l-4 border-orange-500">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-orange-100 text-sm">Pendientes</p>
@@ -144,7 +144,7 @@ export default async function ProfilePage() {
           </div>
 
           {/* Total Gastado */}
-          <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-md p-6 text-white">
+          <div className="bg-black rounded-none shadow-md p-6 text-white border-l-4 border-purple-500">
             <div>
               <p className="text-purple-100 text-sm">Total Gastado</p>
               <p className="text-3xl font-bold mt-1">
@@ -157,14 +157,14 @@ export default async function ProfilePage() {
 
       {/* Dirección Guardada */}
       <div className="mb-10">
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-none shadow-md p-6 border border-gray-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-bold text-gray-800 flex items-center">
               <IoLocationOutline className="mr-2" />
               Dirección de Envío
             </h2>
-            <Link 
-              href="/checkout/address" 
+            <Link
+              href="/checkout/address"
               className="text-blue-600 hover:text-blue-800 text-sm font-semibold"
             >
               Editar →
@@ -179,12 +179,12 @@ export default async function ProfilePage() {
                   {userAddress.firstName} {userAddress.lastName}
                 </p>
               </div>
-              
+
               <div className="p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-500 mb-1">Teléfono</p>
                 <p className="font-semibold text-gray-800">{userAddress.phone}</p>
               </div>
-              
+
               <div className="p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-500 mb-1">Dirección</p>
                 <p className="font-semibold text-gray-800">{userAddress.address}</p>
@@ -192,7 +192,7 @@ export default async function ProfilePage() {
                   <p className="text-gray-600">{userAddress.address2}</p>
                 )}
               </div>
-              
+
               <div className="p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-500 mb-1">Ciudad / Código Postal</p>
                 <p className="font-semibold text-gray-800">
@@ -209,8 +209,8 @@ export default async function ProfilePage() {
             <div className="text-center py-8">
               <IoLocationOutline className="text-6xl text-gray-300 mx-auto mb-4" />
               <p className="text-gray-500 mb-4">No has guardado ninguna dirección aún</p>
-              <Link 
-                href="/checkout/address" 
+              <Link
+                href="/checkout/address"
                 className="btn-primary inline-block"
               >
                 Agregar Dirección
@@ -228,8 +228,8 @@ export default async function ProfilePage() {
               <IoCartOutline className="mr-2" />
               Órdenes Recientes
             </h2>
-            <Link 
-              href="/orders" 
+            <Link
+              href="/orders"
               className="text-blue-600 hover:text-blue-800 text-sm font-semibold"
             >
               Ver todas →
@@ -239,9 +239,9 @@ export default async function ProfilePage() {
           {orders.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="min-w-full">
-                <thead className="bg-gray-50 border-b">
+                <thead className="bg-black border-b">
                   <tr>
-                    <th className="text-left px-4 py-3 text-sm font-semibold text-gray-600">
+                    <th className="text-left px-4 py-3 text-sm font-bold uppercase tracking-wider text-white">
                       Orden
                     </th>
                     <th className="text-left px-4 py-3 text-sm font-semibold text-gray-600">
@@ -282,7 +282,7 @@ export default async function ProfilePage() {
                         )}
                       </td>
                       <td className="px-4 py-3 text-sm">
-                        <Link 
+                        <Link
                           href={`/orders/${order.id}`}
                           className="text-blue-600 hover:text-blue-800 font-semibold"
                         >
@@ -298,8 +298,8 @@ export default async function ProfilePage() {
             <div className="text-center py-8">
               <IoCartOutline className="text-6xl text-gray-300 mx-auto mb-4" />
               <p className="text-gray-500 mb-4">No has realizado ninguna orden aún</p>
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="btn-primary inline-block"
               >
                 Explorar Productos
@@ -311,8 +311,8 @@ export default async function ProfilePage() {
 
       {/* Acciones Rápidas */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Link 
-          href="/orders" 
+        <Link
+          href="/orders"
           className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-500"
         >
           <IoCartOutline className="text-3xl text-blue-600 mb-2" />
@@ -320,8 +320,8 @@ export default async function ProfilePage() {
           <p className="text-sm text-gray-600">Ver historial completo de compras</p>
         </Link>
 
-        <Link 
-          href="/checkout/address" 
+        <Link
+          href="/checkout/address"
           className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-green-500"
         >
           <IoLocationOutline className="text-3xl text-green-600 mb-2" />
@@ -329,8 +329,8 @@ export default async function ProfilePage() {
           <p className="text-sm text-gray-600">Actualizar dirección de envío</p>
         </Link>
 
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-purple-500"
         >
           <IoCartOutline className="text-3xl text-purple-600 mb-2" />

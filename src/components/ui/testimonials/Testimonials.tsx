@@ -25,7 +25,7 @@ export const Testimonials = () => {
 
   useEffect(() => {
     let mounted = true;
-    
+
     // Datos de respaldo si la API falla
     const fallbackData: Testimonial[] = [
       { id: 1, name: 'María García', avatar: '', rating: 5, comment: testimonialTexts[0] },
@@ -33,19 +33,19 @@ export const Testimonials = () => {
       { id: 3, name: 'Ana Martínez', avatar: '', rating: 5, comment: testimonialTexts[2] },
       { id: 4, name: 'Luis Pérez', avatar: '', rating: 5, comment: testimonialTexts[3] },
     ];
-    
+
     fetch('https://api.escuelajs.co/api/v1/users')
       .then(r => r.ok ? r.json() : [])
       .then((data: any[]) => {
         if (!mounted) return;
-        
+
         if (!data || data.length === 0) {
           console.log('Usando testimonials de respaldo');
           setTestimonials(fallbackData);
           setLoading(false);
           return;
         }
-        
+
         const parsed: Testimonial[] = data
           .slice(0, 4)
           .map((u, idx) => ({
@@ -55,7 +55,7 @@ export const Testimonials = () => {
             rating: 5,
             comment: testimonialTexts[idx] || testimonialTexts[0]
           }));
-        
+
         console.log('Testimonials cargados:', parsed);
         setTestimonials(parsed);
         setLoading(false);
@@ -66,7 +66,7 @@ export const Testimonials = () => {
         setTestimonials(fallbackData);
         setLoading(false);
       });
-    
+
     return () => { mounted = false };
   }, []);
 
@@ -122,13 +122,13 @@ export const Testimonials = () => {
               className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center mb-4">
-                <div 
+                <div
                   className="relative w-12 h-12 rounded-full mr-3 flex-shrink-0 overflow-hidden flex items-center justify-center"
                   style={{
                     background: idx === 0 ? 'linear-gradient(to bottom right, rgb(59, 130, 246), rgb(147, 51, 234))' :
-                               idx === 1 ? 'linear-gradient(to bottom right, rgb(236, 72, 153), rgb(225, 29, 72))' :
-                               idx === 2 ? 'linear-gradient(to bottom right, rgb(34, 197, 94), rgb(20, 184, 166))' :
-                               'linear-gradient(to bottom right, rgb(249, 115, 22), rgb(220, 38, 38))'
+                      idx === 1 ? 'linear-gradient(to bottom right, rgb(236, 72, 153), rgb(225, 29, 72))' :
+                        idx === 2 ? 'linear-gradient(to bottom right, rgb(34, 197, 94), rgb(20, 184, 166))' :
+                          'linear-gradient(to bottom right, rgb(249, 115, 22), rgb(220, 38, 38))'
                   }}
                 >
                   {testimonial.avatar && !imageErrors.has(testimonial.id) ? (
@@ -158,7 +158,7 @@ export const Testimonials = () => {
                 </div>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">
-                "{testimonial.comment}"
+                &quot;{testimonial.comment}&quot;
               </p>
             </div>
           ))}

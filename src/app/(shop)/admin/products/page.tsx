@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { IoCardOutline } from "react-icons/io5";
+import { DeleteProductButton } from '@/components/admin/DeleteProductButton';
 
 interface Props {
   searchParams: {
@@ -34,11 +35,11 @@ export default async function OrdersPage({ searchParams }: Props) {
 
       <div className="mb-10">
         <table className="min-w-full">
-          <thead className="bg-gray-200 border-b">
+          <thead className="bg-black border-b">
             <tr>
               <th
                 scope="col"
-                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                className="text-sm font-bold uppercase tracking-wider text-white px-6 py-4 text-left"
               >
                 Imagen
               </th>
@@ -68,9 +69,15 @@ export default async function OrdersPage({ searchParams }: Props) {
               </th>
               <th
                 scope="col"
-                className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                className="text-sm font-bold uppercase tracking-wider text-white px-6 py-4 text-left"
               >
                 Tallas
+              </th>
+              <th
+                scope="col"
+                className="text-sm font-bold uppercase tracking-wider text-white px-6 py-4 text-left"
+              >
+                Acciones
               </th>
             </tr>
           </thead>
@@ -83,7 +90,7 @@ export default async function OrdersPage({ searchParams }: Props) {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   <Link href={`/product/${product.slug}`}>
                     <ProductImage
-                      src={ product.ProductImage[0]?.url }
+                      src={product.ProductImage[0]?.url}
                       width={80}
                       height={80}
                       alt={product.title}
@@ -113,6 +120,13 @@ export default async function OrdersPage({ searchParams }: Props) {
 
                 <td className="text-sm text-gray-900 font-bold px-6 py-4 whitespace-nowrap">
                   {product.sizes.join(", ")}
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  <DeleteProductButton
+                    productId={product.id}
+                    productTitle={product.title}
+                  />
                 </td>
               </tr>
             ))}

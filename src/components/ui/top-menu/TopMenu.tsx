@@ -11,43 +11,43 @@ export const TopMenu = () => {
 
   const openSideMenu = useUIStore((state) => state.openSideMenu);
   const totalItemsInCart = useCartStore((state) => state.getTotalItems());
-  
+
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setLoaded(true);
   }, [])
-  
+
 
 
   return (
-    <nav className="flex px-5 justify-between items-center w-full">
+    <nav className="flex px-8 py-4 justify-between items-center w-full glass-effect fixed top-0 z-50 transition-all">
       {/* Logo */}
       <div>
         <Link href="/">
-          <span className={`${titleFont.className } antialiased font-bold`}>
-            Nova
+          <span className={`${titleFont.className} antialiased font-bold text-2xl tracking-tighter`}>
+            NOVA
           </span>
-          <span> | Shop</span>
+          <span className="font-bold text-xl tracking-widest ml-1">SHOP</span>
         </Link>
       </div>
 
       {/* Center Menu */}
       <div className="hidden sm:block">
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="m-2 p-2 rounded-none transition-all hover:bg-black hover:text-white font-medium uppercase tracking-widest text-sm"
           href="/gender/men"
         >
           Hombres
         </Link>
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="m-2 p-2 rounded-none transition-all hover:bg-black hover:text-white font-medium uppercase tracking-widest text-sm"
           href="/gender/women"
         >
           Mujeres
         </Link>
         <Link
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="m-2 p-2 rounded-none transition-all hover:bg-black hover:text-white font-medium uppercase tracking-widest text-sm"
           href="/gender/kid"
         >
           Niños
@@ -55,33 +55,33 @@ export const TopMenu = () => {
       </div>
 
       {/* Search, Cart, Menu */}
-      <div className="flex items-center">
-        <button 
+      <div className="flex items-center gap-4">
+        <button
           onClick={openSideMenu}
-          className="mx-2 hover:bg-gray-100 p-2 rounded-md transition-all"
+          className="hover:bg-gray-100 p-2 rounded-none transition-all"
           title="Buscar"
         >
-          <IoSearchOutline className="w-5 h-5" />
+          <IoSearchOutline className="w-6 h-6" />
         </button>
 
         <Link href={
-          ( (totalItemsInCart === 0 ) && loaded )
+          ((totalItemsInCart === 0) && loaded)
             ? '/empty'
             : "/cart"
         } className="mx-2">
           <div className="relative">
-            {  ( loaded && totalItemsInCart > 0) && (
-              <span className="fade-in absolute text-xs px-1 rounded-full font-bold -top-2 -right-2 bg-blue-700 text-white">
+            {(loaded && totalItemsInCart > 0) && (
+              <span className="fade-in absolute text-[10px] px-1.5 py-0.5 font-bold -top-2 -right-2 bg-accent text-white rounded-none">
                 {totalItemsInCart}
               </span>
             )}
-            <IoCartOutline className="w-5 h-5" />
+            <IoCartOutline className="w-6 h-6" />
           </div>
         </Link>
 
         <button
           onClick={openSideMenu}
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+          className="p-2 rounded-none transition-all hover:bg-black hover:text-white font-medium uppercase tracking-widest text-sm"
         >
           Menú
         </button>

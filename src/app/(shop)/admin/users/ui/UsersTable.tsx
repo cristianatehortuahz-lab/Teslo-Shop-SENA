@@ -25,8 +25,8 @@ export const UsersTable = ({ users }: Props) => {
   };
 
   return (
-    <table className="min-w-full bg-white rounded-lg overflow-hidden">
-      <thead className="bg-gradient-to-r from-gray-100 to-gray-200 border-b-2 border-gray-300">
+    <table className="min-w-full">
+      <thead className="bg-black border-b">
         <tr>
           <th
             scope="col"
@@ -61,18 +61,18 @@ export const UsersTable = ({ users }: Props) => {
             className="hover:bg-gray-50 transition-colors duration-150"
           >
             <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm font-medium text-gray-900">{ user.email }</div>
+              <div className="text-sm font-medium text-gray-900">{user.email}</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-gray-900">{ user.name }</div>
+              <div className="text-sm text-gray-900">{user.name}</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
               {getRoleBadge(user.role)}
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
-              <select 
-                value={ user.role }
-                onChange={ e =>  changeUserRole( user.id, e.target.value) }
+              <select
+                value={user.role}
+                onChange={e => changeUserRole(user.id, e.target.value)}
                 className="text-sm p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                 <option value="admin">Admin</option>
                 <option value="user">User</option>
